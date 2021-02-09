@@ -24,6 +24,9 @@ def solution(new_id):
             if j == '-' or j == '_' or j == '.':
                 answer += j
                 continue
+    
+    
+    
 
     cnt = 0
     answer2 = ''
@@ -40,7 +43,7 @@ def solution(new_id):
         cnt += 1
         answer2 += val
 
-    print(answer2)
+    # print(answer2)
 
     # s4
     if answer2[0] == '.':
@@ -48,25 +51,31 @@ def solution(new_id):
 
     if answer[-1] == '.':
         answer2 = answer2[:-1]
+        # print(answer2)
 
-        # s5
+    
+
+    # s5
     if len(answer2) == 0:
-        answer2 += 'a'
+        return 'aaa'
+
+
 
     # s6
     if len(answer2) > 15:
         answer2 = answer2[:15]
 
-    if answer[-1] == '.':
+
+    if answer2[-1] == '.':
         answer2 = answer2[:-1]
 
     # s7
-
-    if len(answer2) < 2:
-        while len(answer2) == 3:
-            answer2 += answer2[-1]
+    # if len(answer2) < 2:
+    while len(answer2) < 3:
+        answer2 += answer2[-1]
 
     return answer2
 
 
-print(solution("...!@BaT#*..y.abcdefghijklm"))
+# print(solution("...!@BaT#*..y.abcdefghijklm"))
+print(solution(	"z-+.^."))
