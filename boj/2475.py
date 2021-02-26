@@ -10,7 +10,7 @@ import sys
 class Solution:
     input = sys.stdin.readline
     def solution(self):
-        return sum([int(i)**2 for i in input().split()]) % 10
+        return sum([int(i)**2 for i in input().split() if i != '0']) % 10
 
 
 print(Solution().solution())
