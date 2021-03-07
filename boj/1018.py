@@ -14,29 +14,45 @@ class Solution:
     input = sys.stdin.readline
     def solution(self):
         N, M = map(int, input().split())
-        board = [input() for i in range(N)]
-        pattern = ['W', 'B'] * 4
+        wood = [input() for i in range(N)]
+        white = [
+            'WBWBWBWB',
+            'BWBWBWBW',
+            'WBWBWBWB',
+            'BWBWBWBW',
+            'WBWBWBWB',
+            'BWBWBWBW',
+            'WBWBWBWB',
+            'BWBWBWBW'
+        ]
 
-        def fill(row, col):
-            refilled = 0
-            for _row in range(row, row+8):
-                for _col in range(col, col+8):
-                    target = board[_row][_col]
-                    if target == pattern[_col]:
-                        continue
-                    target = pattern[_col]
-                    refilled += 1
-            return refilled
-                    
+        black = [
+            'BWBWBWBW',
+            'WBWBWBWB',
+            'BWBWBWBW',
+            'WBWBWBWB',
+            'BWBWBWBW',
+            'WBWBWBWB',
+            'BWBWBWBW',
+            'WBWBWBWB'
+        ]
 
+        def window(r, c, _mask):
+            updated = 0
+            for row in range(r, r+8):
+                for col in range(c,c+8):
+                    if wood[row][col] != _mask[row-r][col-c]:
+                        updated += 1
+            print(f'row: {r}, col: {c}, updated: {updated}')
+            return updated
 
-
-        result = float('inf')
+        answer = float('inf')
         for row in range(N-7):
             for col in range(M-7):
-                result = min(result, fill(row, col))
+                answer = min(answer, window(row, col, white))
+                answer = min(answer, window(row, col, black))
         
-        return result
+        return answer
 
-Solution().solution()
+print(Solution().solution())
 
