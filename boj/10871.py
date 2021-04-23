@@ -10,10 +10,14 @@ import sys
 class Solution:
     input = sys.stdin.readline
     def solution(self):
-        N, X = map(int, input().split())
-        result = [i for i in map(int, input().split()) if i < X]
-        [print(i, end=' ') for i in result]
+        # N, X = map(int, input().split())
+        # result = [i for i in map(int, input().split()) if i < X]
+        # [print(i, end=' ') for i in result]
         # print(result[-1], end=' ')
+
+        N, X = map(int, input().split())
+        A = map(int, input().split())
+        A = [print(i, end=' ') for i in filter(lambda i: i < X, A)]
 
 Solution().solution()
     
